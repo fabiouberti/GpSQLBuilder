@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{EB1211F1-808D-4111-B34B-C71A78AAE549}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GpSQLBuilderDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\TestGpSQLBuilder.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Testes\GpSQLBuilderTestes.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GpSQLBuilderDelphi">
+        <MSBuild Projects="GpSQLBuilderDelphi.dproj"/>
+    </Target>
+    <Target Name="GpSQLBuilderDelphi:Clean">
+        <MSBuild Projects="GpSQLBuilderDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GpSQLBuilderDelphi:Make">
+        <MSBuild Projects="GpSQLBuilderDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestGpSQLBuilder">
+        <MSBuild Projects="Tests\TestGpSQLBuilder.dproj"/>
+    </Target>
+    <Target Name="TestGpSQLBuilder:Clean">
+        <MSBuild Projects="Tests\TestGpSQLBuilder.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestGpSQLBuilder:Make">
+        <MSBuild Projects="Tests\TestGpSQLBuilder.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GpSQLBuilderTestes">
+        <MSBuild Projects="Testes\GpSQLBuilderTestes.dproj"/>
+    </Target>
+    <Target Name="GpSQLBuilderTestes:Clean">
+        <MSBuild Projects="Testes\GpSQLBuilderTestes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GpSQLBuilderTestes:Make">
+        <MSBuild Projects="Testes\GpSQLBuilderTestes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GpSQLBuilderDelphi;TestGpSQLBuilder;GpSQLBuilderTestes"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GpSQLBuilderDelphi:Clean;TestGpSQLBuilder:Clean;GpSQLBuilderTestes:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GpSQLBuilderDelphi:Make;TestGpSQLBuilder:Make;GpSQLBuilderTestes:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
